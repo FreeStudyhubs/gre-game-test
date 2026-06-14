@@ -1,0 +1,1266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GRE Quant Quest · Practice Set 4 · FreeStudy Hub</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,400&family=DM+Sans:wght@400;500;600;700;800&display=swap');
+:root{
+  --navy:#0B1F3A;--navy-mid:#1A3558;--blue:#1D4ED8;--blue-h:#1E40AF;
+  --teal:#0D9488;--teal-l:#2DD4BF;--bg:#EEF1F6;--panel:#FFFFFF;
+  --off:#F7F9FC;--bdr:#C9D3E0;--bdrl:#E2E8F0;--txt:#1E2A3B;--muted:#5A6878;
+  --gold:#F59E0B;--gold-l:#FCD34D;--red:#DC2626;
+  --serif:'Source Serif 4','Times New Roman',serif;
+  --sans:'DM Sans','Helvetica Neue',sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%}
+body{font-family:var(--sans);background:var(--bg);color:var(--txt);display:flex;flex-direction:column;min-height:100vh}
+
+/* TOP BAR */
+.topbar{background:var(--navy);display:flex;align-items:center;justify-content:space-between;padding:0 20px;height:56px;flex-shrink:0;border-bottom:3px solid var(--teal);position:sticky;top:0;z-index:50}
+.brand{display:flex;align-items:center;gap:10px}
+.brand-name{font-weight:800;font-size:15px;letter-spacing:1.5px;color:#fff;text-transform:uppercase;line-height:1.1}
+.brand-tag{font-size:7px;letter-spacing:1.8px;color:var(--teal-l);text-transform:uppercase}
+.topbar-center{position:absolute;left:50%;transform:translateX(-50%);text-align:center;pointer-events:none}
+.topbar-center .lbl{font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:#7A96BC;display:block}
+.topbar-center .ttl{font-size:13px;font-weight:600;color:#fff}
+.topbar-center .ttl span{color:#CBD8EC;font-weight:400}
+.xp-pill{display:flex;align-items:center;gap:5px;font-size:13px;font-weight:700;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);border-radius:6px;padding:6px 12px;color:var(--gold-l);min-width:80px;justify-content:center}
+
+/* XP STRIP */
+.xp-strip{background:var(--navy-mid);padding:6px 20px;border-bottom:1px solid rgba(255,255,255,.06)}
+.xp-strip-inner{max-width:800px;margin:0 auto;display:flex;align-items:center;gap:10px}
+.xp-lbl{font-size:11px;color:#7A96BC;font-weight:500;white-space:nowrap}
+.xp-bar-o{flex:1;height:7px;background:rgba(255,255,255,.1);border-radius:4px;overflow:hidden}
+.xp-bar-i{height:100%;background:linear-gradient(90deg,var(--teal),var(--blue));border-radius:4px;transition:width .5s ease;width:0%}
+.xp-num{font-size:11px;color:var(--gold-l);font-weight:700;white-space:nowrap}
+
+/* WRAP */
+.game-wrap{flex:1;max-width:800px;width:100%;margin:0 auto;padding:22px 18px 96px}
+.screen{display:none}
+.screen.active{display:block}
+
+/* TITLE */
+.title-hero{text-align:center;padding:32px 0 20px}
+.title-eye{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--teal);font-weight:600;margin-bottom:8px}
+.title-h{font-family:var(--serif);font-size:2.4em;font-weight:600;color:var(--navy);line-height:1.2;margin-bottom:6px}
+.title-sub{font-size:14px;color:var(--muted);margin-bottom:22px;line-height:1.6}
+.hero-icon{font-size:4.5em;line-height:1;margin:16px 0;animation:float 3s ease-in-out infinite}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+.info-card{background:var(--panel);border:1px solid var(--bdr);border-radius:10px;padding:20px 24px;margin-bottom:18px}
+.info-card h3{font-size:12px;font-weight:700;color:var(--navy);text-transform:uppercase;letter-spacing:.08em;margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid var(--bdrl)}
+.info-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;font-size:13px}
+.info-item{display:flex;align-items:center;gap:8px;padding:8px 10px;background:var(--off);border:1px solid var(--bdrl);border-radius:6px;font-weight:500}
+.diff-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(29,78,216,.1);border:1px solid rgba(29,78,216,.25);color:var(--blue);border-radius:20px;padding:4px 14px;font-size:12px;font-weight:600;margin-bottom:18px}
+.btn-row{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:20px}
+
+/* PROGRESS BAR */
+.prog-strip{background:var(--panel);border:1px solid var(--bdr);border-radius:8px;padding:12px 16px;margin-bottom:18px;display:flex;align-items:center;gap:12px}
+.prog-label{font-size:12px;font-weight:600;color:var(--navy);white-space:nowrap}
+.prog-dots{display:flex;gap:4px;flex-wrap:wrap;flex:1}
+.pdot{width:22px;height:22px;border-radius:4px;border:1.5px solid var(--bdr);background:var(--off);font-size:9px;font-weight:700;color:var(--muted);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all .12s;flex-shrink:0}
+.pdot:hover{background:var(--bdrl)}
+.pdot.cur{background:var(--blue);border-color:var(--blue);color:#fff;box-shadow:0 0 0 2px rgba(29,78,216,.3)}
+.pdot.ans{background:var(--teal);border-color:var(--teal);color:#fff}
+.pdot.ok{background:#16A34A;border-color:#16A34A;color:#fff}
+.pdot.bad{background:var(--red);border-color:var(--red);color:#fff}
+.pdot.skip{background:#D97706;border-color:#D97706;color:#fff}
+
+/* QUESTION */
+.q-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;flex-wrap:wrap;gap:8px}
+.q-badge{font-size:13px;font-weight:700;color:var(--navy);background:var(--bdrl);border-radius:20px;padding:5px 16px;letter-spacing:.03em}
+.q-type-tag{font-size:11px;background:var(--off);border:1.5px solid var(--bdr);border-radius:12px;padding:3px 12px;color:var(--muted);font-weight:500}
+.q-panel{background:var(--panel);border:1px solid var(--bdr);border-radius:10px;padding:24px 28px;margin-bottom:14px}
+.q-directions{background:#EFF6FF;border:1px solid #BFDBFE;border-radius:6px;padding:10px 16px;font-size:12.5px;color:#1E40AF;margin-bottom:18px;line-height:1.55}
+.q-stimulus{font-family:var(--serif);font-size:15px;line-height:1.75;background:var(--off);border-left:3px solid var(--teal);padding:12px 16px;border-radius:0 5px 5px 0;margin-bottom:18px;color:var(--txt)}
+
+/* QC TABLE */
+.qc-wrap{display:grid;grid-template-columns:1fr 1fr;border:2px solid var(--bdr);border-radius:6px;overflow:hidden;margin-bottom:20px;background:var(--off)}
+.qc-col:first-child{border-right:2px solid var(--bdr)}
+.qc-head{background:var(--navy-mid);color:#C5D5EB;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;text-align:center;padding:10px;border-bottom:2px solid var(--bdr)}
+.qc-val{padding:22px 16px;text-align:center;font-family:var(--serif);font-size:17px;line-height:1.5;color:var(--txt);min-height:80px;display:flex;align-items:center;justify-content:center}
+
+/* OPTIONS */
+.options{list-style:none;display:flex;flex-direction:column;gap:8px;margin-bottom:16px}
+.opt{display:flex;align-items:flex-start;gap:12px;padding:12px 16px;border:1.5px solid var(--bdrl);border-radius:6px;cursor:pointer;font-size:14px;font-family:var(--serif);transition:all .12s;background:var(--off);user-select:none;line-height:1.5}
+.opt:hover{background:#EFF6FF;border-color:#93C5FD}
+.opt.sel{background:#EFF6FF;border-color:#3B82F6;color:#1D40AF}
+.opt-circle{width:24px;height:24px;border-radius:50%;border:2px solid var(--bdr);flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;font-family:var(--sans);color:var(--muted);background:#fff;transition:all .12s;margin-top:1px}
+.opt.sel .opt-circle{background:var(--blue);border-color:var(--blue);color:#fff}
+.opt.ok{background:#ECFDF5;border-color:#6EE7B7;color:#064E3B}
+.opt.bad{background:#FEF2F2;border-color:#FCA5A5;color:#7F1D1D}
+.opt-key{font-weight:700;font-family:var(--sans);font-size:13px;flex-shrink:0;margin-top:1px}
+
+/* NUMERIC ENTRY */
+.num-wrap{display:flex;flex-direction:column;gap:6px;margin-bottom:16px}
+.num-lbl{font-size:12.5px;color:var(--muted);font-weight:500}
+.num-inp{width:160px;height:44px;border:1.5px solid var(--bdr);border-radius:6px;padding:0 14px;font-size:17px;font-family:var(--serif);text-align:center;background:var(--off);outline:none;transition:border-color .15s}
+.num-inp:focus{border-color:var(--blue);background:#fff}
+
+/* FRAC INLINE */
+.fr{display:inline-flex;flex-direction:column;align-items:center;vertical-align:middle;margin:0 2px;font-family:var(--serif);line-height:1.1}
+.fr span{font-size:.82em;text-align:center}
+.fr .fb{width:100%;min-width:18px;height:1.5px;background:currentColor}
+
+/* ACTION ROW */
+.action-row{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+
+/* FEEDBACK */
+.feedback{margin:12px 0;padding:12px 16px;border-radius:6px;font-size:13.5px;font-weight:600;line-height:1.5}
+.fb-correct{background:#ECFDF5;border:1.5px solid #6EE7B7;color:#064E3B}
+.fb-wrong{background:#FEF2F2;border:1.5px solid #FCA5A5;color:#7F1D1D}
+.fb-hint{background:#EFF6FF;border:1px solid #BFDBFE;border-radius:6px;padding:12px 16px;font-size:13px;color:#1E40AF;margin:10px 0;line-height:1.6}
+.fb-hint strong{display:block;font-size:11px;letter-spacing:.08em;text-transform:uppercase;margin-bottom:4px}
+.explanation{display:none;margin-top:14px;padding:14px 18px;background:#F0FDF4;border:1.5px solid #86EFAC;border-radius:6px;font-size:13.5px;line-height:1.7;color:#14532D;font-family:var(--serif)}
+.explanation.show{display:block}
+
+/* BUTTONS */
+.btn{font-family:var(--sans);font-size:13.5px;font-weight:600;padding:10px 22px;border-radius:6px;border:none;cursor:pointer;transition:all .15s;letter-spacing:.02em}
+.btn-primary{background:linear-gradient(135deg,var(--teal),var(--blue));color:#fff;box-shadow:0 2px 8px rgba(13,148,136,.3)}
+.btn-primary:hover{box-shadow:0 4px 16px rgba(13,148,136,.4);transform:translateY(-1px)}
+.btn-secondary{background:var(--off);color:var(--txt);border:1.5px solid var(--bdr)}
+.btn-secondary:hover{background:var(--bdrl)}
+.btn-gold{background:linear-gradient(135deg,var(--gold),#F97316);color:#fff;box-shadow:0 2px 8px rgba(245,158,11,.3)}
+.btn-gold:hover{transform:translateY(-1px)}
+.btn-danger{background:linear-gradient(135deg,#DC2626,#991B1B);color:#fff}
+.btn-danger:hover{transform:translateY(-1px)}
+
+/* NAV BAR */
+.botnav{position:fixed;bottom:0;left:0;right:0;background:var(--panel);border-top:1px solid var(--bdr);padding:12px 24px;display:flex;align-items:center;justify-content:space-between;z-index:20;box-shadow:0 -2px 12px rgba(0,0,0,.08)}
+.nav-ctr{font-size:12.5px;color:var(--muted);font-weight:500;text-align:center}
+.nav-right{display:flex;gap:8px}
+
+/* SCORE */
+.score-wrap{text-align:center;padding:28px 0}
+.score-eye{font-size:11px;letter-spacing:.15em;text-transform:uppercase;color:var(--teal);font-weight:700;margin-bottom:8px}
+.score-title{font-family:var(--serif);font-size:2em;font-weight:600;color:var(--navy);margin-bottom:6px}
+.score-sub{font-size:15px;color:var(--muted);margin-bottom:22px}
+.score-big{font-size:5em;font-weight:800;color:var(--navy);line-height:1;margin:10px 0}
+.sbar-o{width:320px;max-width:90vw;height:12px;background:var(--bdrl);border-radius:6px;overflow:hidden;margin:0 auto 22px}
+.sbar-i{height:100%;background:linear-gradient(90deg,var(--teal),var(--blue));border-radius:6px;transition:width 1s ease}
+.stat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:18px 0;max-width:600px;margin-left:auto;margin-right:auto}
+.stat-card{background:var(--panel);border:1px solid var(--bdr);border-radius:8px;padding:14px 10px;text-align:center}
+.stat-val{font-size:1.9em;font-weight:800;line-height:1;margin-bottom:4px}
+.stat-lbl{font-size:10px;color:var(--muted);font-weight:500;text-transform:uppercase;letter-spacing:.08em}
+.badge-row{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin:18px 0}
+.badge{background:linear-gradient(135deg,var(--gold),#F97316);color:#fff;font-size:12px;font-weight:700;padding:5px 14px;border-radius:20px}
+.mastery-card{background:var(--panel);border:1px solid var(--bdr);border-radius:8px;padding:18px 22px;text-align:left;margin:18px auto;max-width:560px}
+.mastery-card h3{font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--navy);margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid var(--bdrl)}
+.mastery-card ul{list-style:none}
+.mastery-card li{padding:6px 0;font-size:13.5px;border-bottom:1px solid var(--bdrl);display:flex;gap:10px;align-items:flex-start}
+.mastery-card li:last-child{border:none}
+.chk{color:var(--teal);flex-shrink:0}
+
+/* DIAGRAM */
+.diagram-wrap{display:flex;justify-content:center;padding:10px 0 6px}
+
+/* FOOTER */
+.pgfoot{background:var(--navy);text-align:center;padding:26px 16px 36px;border-top:1px solid var(--navy-mid)}
+.pgfoot-inner{max-width:680px;margin:0 auto;display:flex;flex-direction:column;align-items:center}
+.pgfoot-name{font-weight:800;font-size:19px;letter-spacing:3px;color:#fff;text-transform:uppercase;margin-top:10px}
+.pgfoot-tag{font-size:10px;letter-spacing:2.5px;color:var(--teal-l);text-transform:uppercase;margin:4px 0 6px}
+.pgfoot-desc{font-size:11px;color:#7A96BC;text-align:center;margin-bottom:16px;line-height:1.6}
+.pgfoot-div{width:100%;height:1px;background:linear-gradient(90deg,transparent,#1A3558,transparent);margin-bottom:14px}
+.pgfoot-links{display:flex;flex-wrap:wrap;justify-content:center;gap:16px;margin-bottom:14px}
+.pgfoot-link{display:flex;align-items:center;gap:7px;text-decoration:none;font-size:12px;font-weight:500}
+.pgfoot-icon{background:#1A3558;border-radius:50%;width:26px;height:26px;display:flex;align-items:center;justify-content:center;font-size:13px}
+.pgfoot-cta{display:inline-block;background:linear-gradient(135deg,var(--teal),var(--blue));color:#fff;font-weight:700;font-size:12.5px;letter-spacing:1px;padding:10px 30px;border-radius:24px;text-decoration:none;text-transform:uppercase;margin-bottom:16px;box-shadow:0 4px 16px rgba(13,148,136,.35)}
+.pgfoot-copy{font-size:10.5px;color:#4A6080;text-align:center;line-height:1.8}
+.pgfoot-copy span{color:#7A96BC;font-weight:600}
+
+/* MODE SELECTION CARDS */
+.mode-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:4px}
+.mode-card{background:var(--panel);border:2px solid var(--bdr);border-radius:12px;padding:22px 20px;cursor:pointer;transition:all .18s;text-align:center;position:relative;overflow:hidden}
+.mode-card:hover{transform:translateY(-3px);box-shadow:0 6px 20px rgba(0,0,0,.1)}
+.mode-card.selected{border-color:var(--teal);box-shadow:0 0 0 3px rgba(13,148,136,.18)}
+.mode-practice.selected{border-color:var(--blue);box-shadow:0 0 0 3px rgba(29,78,216,.18)}
+.mode-test.selected{border-color:var(--gold);box-shadow:0 0 0 3px rgba(245,158,11,.18)}
+.mode-icon{font-size:2.4em;margin-bottom:10px}
+.mode-name{font-size:15px;font-weight:700;color:var(--navy);margin-bottom:8px}
+.mode-desc{font-size:12.5px;color:var(--muted);line-height:1.6;margin-bottom:10px}
+.mode-tag{display:inline-block;font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;padding:3px 10px;border-radius:20px}
+.mode-practice .mode-tag{background:rgba(29,78,216,.1);color:var(--blue)}
+.mode-test .mode-tag{background:rgba(245,158,11,.12);color:#92400E}
+.mode-card::after{content:'';position:absolute;top:10px;right:12px;width:20px;height:20px;border-radius:50%;border:2px solid var(--bdr);transition:all .15s}
+.mode-card.selected::after{background:var(--teal);border-color:var(--teal);box-shadow:inset 0 0 0 3px #fff}
+.mode-practice.selected::after{background:var(--blue);border-color:var(--blue)}
+.mode-test.selected::after{background:var(--gold);border-color:var(--gold)}
+
+/* TIMER IN PROG STRIP */
+.timer-box{display:flex;align-items:center;gap:6px;font-size:14px;font-weight:700;background:rgba(245,158,11,.12);border:1.5px solid rgba(245,158,11,.35);border-radius:6px;padding:5px 12px;color:#92400E;flex-shrink:0;font-variant-numeric:tabular-nums;min-width:90px;justify-content:center}
+.timer-box.urgent{background:rgba(220,38,38,.1);border-color:rgba(220,38,38,.4);color:#991B1B;animation:pulse-timer .6s infinite}
+@keyframes pulse-timer{0%,100%{opacity:1}50%{opacity:.55}}
+
+/* TIME UP OVERLAY */
+.timeup-overlay{position:fixed;inset:0;background:rgba(11,31,58,.85);display:flex;align-items:center;justify-content:center;z-index:200;backdrop-filter:blur(4px)}
+.timeup-box{background:var(--panel);border-radius:14px;padding:40px 36px;text-align:center;max-width:380px;width:90%}
+.timeup-icon{font-size:3.5em;margin-bottom:12px}
+.timeup-title{font-family:var(--serif);font-size:1.6em;font-weight:600;color:var(--navy);margin-bottom:8px}
+.timeup-sub{font-size:14px;color:var(--muted);margin-bottom:22px;line-height:1.6}
+
+/* TIMED MODE — hide hint btn, submit btn changes */
+.timed-mode #hint-btn{display:none}
+
+@media(max-width:640px){
+  .q-panel{padding:16px 14px}
+  .game-wrap{padding:14px 10px 90px}
+  .stat-grid{grid-template-columns:1fr 1fr}
+  .info-grid{grid-template-columns:1fr}
+  .topbar-center{display:none}
+  .mode-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="brand">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 38 44" width="26" height="30">
+      <circle cx="19" cy="6" r="5.5" fill="#2DD4BF"/>
+      <path d="M12,14 Q19,10 26,14 L24,23 L14,23 Z" fill="#2DD4BF"/>
+      <path d="M7,21 Q13,17 19,21 L19,32 Q13,30 7,32 Z" fill="#2DD4BF"/>
+      <path d="M19,21 Q25,17 31,21 L31,32 Q25,30 19,32 Z" fill="#2DD4BF"/>
+    </svg>
+    <div>
+      <div class="brand-name">FreeStudy Hub</div>
+      <div class="brand-tag">Learn Free. Go Further.</div>
+    </div>
+  </div>
+  <div class="topbar-center">
+    <span class="lbl">GRE Quant Quest</span>
+    <div class="ttl">Practice Set 4 <span>· 15 Questions · Mixed</span></div>
+  </div>
+  <div class="xp-pill">⭐ <span id="xp-disp">0 XP</span></div>
+</header>
+
+<div class="xp-strip">
+  <div class="xp-strip-inner">
+    <span class="xp-lbl">XP</span>
+    <div class="xp-bar-o"><div class="xp-bar-i" id="xp-bar"></div></div>
+    <span class="xp-num" id="xp-num">0 / 300</span>
+  </div>
+</div>
+
+<div class="game-wrap">
+
+  <!-- TITLE -->
+  <div class="screen active" id="screen-title">
+    <div class="title-hero">
+      <div class="title-eye">FreeStudy Hub · GRE Quant Quest</div>
+      <h1 class="title-h">Practice Set 4</h1>
+      <p class="title-sub">15 official ETS questions — Quantitative Comparison, Multiple Choice,<br>Select All That Apply, and Numeric Entry.</p>
+      <div class="hero-icon">🎯</div>
+    </div>
+
+    <!-- MODE CARDS -->
+    <div class="mode-grid">
+      <div class="mode-card mode-practice" onclick="selectMode('practice')" id="mcard-practice">
+        <div class="mode-icon">📚</div>
+        <div class="mode-name">Practice Mode</div>
+        <div class="mode-desc">Hints available · Instant feedback per question · No time limit · Progress auto-saves</div>
+        <div class="mode-tag">Recommended for learning</div>
+      </div>
+      <div class="mode-card mode-test" onclick="selectMode('test')" id="mcard-test">
+        <div class="mode-icon">⏱️</div>
+        <div class="mode-name">Timed Test</div>
+        <div class="mode-desc">35-minute countdown · No hints · Submit all at end · Simulates real GRE conditions</div>
+        <div class="mode-tag">GRE exam simulation</div>
+      </div>
+    </div>
+
+    <div class="info-card" style="margin-top:18px">
+      <h3>What's Covered</h3>
+      <div class="info-grid">
+        <div class="info-item">📐 Parallelogram angles</div>
+        <div class="info-item">🔢 Profit &amp; revenue</div>
+        <div class="info-item">📊 Trapezoid geometry</div>
+        <div class="info-item">📉 Standard deviation</div>
+        <div class="info-item">🔣 Polynomial equations</div>
+        <div class="info-item">🎲 Normal distribution</div>
+        <div class="info-item">📏 Right triangles</div>
+        <div class="info-item">♻️ Probability &amp; sets</div>
+      </div>
+    </div>
+
+    <div class="btn-row">
+      <button class="btn btn-primary" id="btn-start-mode" onclick="startSelectedMode()">🎮 Start Practice Mode</button>
+      <button class="btn btn-secondary" onclick="loadGame()">📊 Continue Saved</button>
+    </div>
+    <p style="text-align:center;font-size:12px;color:var(--muted);margin-top:14px">Source: ETS GRE Official Guide 2025 · Practice Set 4</p>
+  </div>
+
+  <!-- QUESTION SCREEN -->
+  <div class="screen" id="screen-q">
+    <div class="prog-strip">
+      <div class="prog-label">Q <span id="q-num-lbl">1</span>/15</div>
+      <div class="prog-dots" id="prog-dots"></div>
+      <!-- Timer shown only in timed mode -->
+      <div class="timer-box" id="timer-box" style="display:none">
+        <span id="timer-icon">⏱</span>
+        <span id="timer-txt">35:00</span>
+      </div>
+    </div>
+    <div class="q-header">
+      <span class="q-badge" id="q-badge">Question 1 of 15</span>
+      <span class="q-type-tag" id="q-type-tag">Quantitative Comparison</span>
+    </div>
+    <div class="q-panel">
+      <div class="q-directions" id="q-dir"></div>
+      <div id="q-body"></div>
+      <div id="q-input-area"></div>
+      <div class="action-row" style="margin-top:8px" id="action-row">
+        <button class="btn btn-secondary" id="hint-btn" onclick="showHint()" style="font-size:12.5px;padding:8px 16px">💡 Hint</button>
+        <button class="btn btn-primary" id="submit-btn" onclick="submitAnswer()">✅ Submit</button>
+      </div>
+      <div id="q-feedback"></div>
+      <div class="explanation" id="q-explanation"></div>
+    </div>
+  </div>
+
+  <!-- SCORE SCREEN -->
+  <div class="screen" id="screen-score">
+    <div class="score-wrap">
+      <div class="score-eye" id="score-eye">🎉 Practice Set 4 Complete</div>
+      <div class="score-title">Results</div>
+      <div class="score-big" id="s-pct">—</div>
+      <div class="score-sub" id="s-sub">Calculating...</div>
+      <div class="sbar-o"><div class="sbar-i" id="s-bar" style="width:0%"></div></div>
+      <div style="font-size:14px;color:var(--muted);margin-bottom:18px;font-style:italic" id="s-comment"></div>
+      <div class="stat-grid">
+        <div class="stat-card"><div class="stat-val" style="color:var(--teal)" id="s-correct">—</div><div class="stat-lbl">Correct</div></div>
+        <div class="stat-card"><div class="stat-val" style="color:var(--red)" id="s-wrong">—</div><div class="stat-lbl">Wrong</div></div>
+        <div class="stat-card"><div class="stat-val" style="color:var(--muted)" id="s-skip">—</div><div class="stat-lbl">Skipped</div></div>
+        <div class="stat-card"><div class="stat-val" style="color:var(--gold)" id="s-xp">—</div><div class="stat-lbl">XP Earned</div></div>
+        <div class="stat-card" id="s-time-card" style="display:none;grid-column:1/-1"><div class="stat-val" style="color:var(--blue);font-size:1.5em" id="s-time">—</div><div class="stat-lbl">⏱ Time Used</div></div>
+      </div>
+      <div class="badge-row" id="s-badges"></div>
+      <div class="mastery-card">
+        <h3>📇 Topics Tested</h3>
+        <ul id="s-topics"></ul>
+      </div>
+      <div class="btn-row">
+        <button class="btn btn-primary" onclick="startReview()">📋 Review Answers</button>
+        <button class="btn btn-gold" onclick="startGame()">🔄 Practice Again</button>
+        <button class="btn btn-secondary" onclick="goTitle()">🏠 Title Screen</button>
+      </div>
+      <p style="margin-top:14px;font-size:12px;color:var(--muted)">More free practice at <a href="https://freestudyhub.store" target="_blank" style="color:var(--teal);font-weight:600">freestudyhub.store</a></p>
+    </div>
+  </div>
+
+</div>
+
+<!-- BOTTOM NAV -->
+<div class="botnav" id="botnav">
+  <button class="btn btn-secondary" id="btn-back" onclick="goQ(-1)" disabled>← Back</button>
+  <div class="nav-ctr" id="nav-ctr"></div>
+  <div class="nav-right">
+    <button class="btn btn-secondary" id="btn-skip" onclick="skipQ()">Skip</button>
+    <button class="btn btn-primary" id="btn-next" onclick="goQ(1)">Next →</button>
+    <button class="btn btn-gold" id="btn-submit-final" style="display:none" onclick="finalSubmit()">Submit All</button>
+  </div>
+</div>
+
+<footer class="pgfoot">
+  <div class="pgfoot-inner">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 68" width="44" height="50">
+      <circle cx="30" cy="9" r="8.5" fill="#2DD4BF"/>
+      <path d="M19,22 Q30,17 41,22 L38,36 L22,36 Z" fill="#2DD4BF"/>
+      <path d="M10,33 Q20,27 30,33 L30,50 Q20,47 10,50 Z" fill="#2DD4BF"/>
+      <path d="M30,33 Q40,27 50,33 L50,50 Q40,47 30,50 Z" fill="#2DD4BF"/>
+    </svg>
+    <div class="pgfoot-name">FreeStudy Hub</div>
+    <div class="pgfoot-tag">Learn Free. Go Further.</div>
+    <div class="pgfoot-desc">GRE &nbsp;·&nbsp; GMAT &nbsp;·&nbsp; Test Prep &nbsp;·&nbsp; Academic Coaching<br><span style="color:#94BAE8">Free for everyone &nbsp;·&nbsp; Premium for those who want more</span></div>
+    <div class="pgfoot-div"></div>
+    <div class="pgfoot-links">
+      <a href="tel:+2348032710570" class="pgfoot-link" style="color:#CBD8EC"><span class="pgfoot-icon">📞</span>+234 803 271 0570</a>
+      <a href="https://freestudyhub.store" target="_blank" class="pgfoot-link" style="color:#2DD4BF"><span class="pgfoot-icon">🌐</span>freestudyhub.store</a>
+      <a href="https://youtube.com/@LeonardNwosu-k8z" target="_blank" class="pgfoot-link" style="color:#FC4444"><span class="pgfoot-icon">▶</span>youtube.com/@LeonardNwosu-k8z</a>
+    </div>
+    <a href="https://freestudyhub.store" target="_blank" class="pgfoot-cta">Join Now — It's Free</a>
+    <div class="pgfoot-div"></div>
+    <div class="pgfoot-copy">Prepared by <span>Leonard Nwosu</span> &nbsp;·&nbsp; Free Study Hub<br>&copy; 2026 Free Study Hub. All Rights Reserved.</div>
+  </div>
+</footer>
+
+<script>
+// ════════════════════════════════════════════
+// QUESTION DATA — ETS GRE Official Guide 2025 Practice Set 4
+// ════════════════════════════════════════════
+const QS = [
+  {
+    num:1, type:'Quantitative Comparison',
+    dir:'Compare Quantity A and Quantity B. Select the best answer.',
+    stimulus:`A group of children is divided into <em>r</em> teams of 7 players each and 1 team of 10 players. The group has more than 30 but less than 50 children, and each child belongs to only one team.`,
+    body:`<div class="qc-wrap">
+      <div class="qc-col"><div class="qc-head">Quantity A</div><div class="qc-val">The number of children in the group</div></div>
+      <div class="qc-col"><div class="qc-head">Quantity B</div><div class="qc-val">38</div></div>
+    </div>`,
+    inputType:'qc',
+    correct:'D',
+    hint:'Set up the inequality: 30 < 7r + 10 < 50. Solve for r. What are the possible integer values of r?',
+    explanation:`<strong>Answer: (D) — Cannot be determined.</strong><br>
+    Total children = 7r + 10. The constraint gives 30 &lt; 7r + 10 &lt; 50, so 20 &lt; 7r &lt; 40, meaning 2 6/7 &lt; r &lt; 5 5/7.<br>
+    So r = 3, 4, or 5 → totals of 31, 38, or 45. Quantity A could be less than, equal to, or greater than 38. <strong>Cannot be determined.</strong>`
+  },
+  {
+    num:2, type:'Quantitative Comparison',
+    dir:'Compare Quantity A and Quantity B. Select the best answer.',
+    stimulus:'0 &lt; <em>s</em> &lt; <em>t</em>',
+    body:`<div class="qc-wrap">
+      <div class="qc-col"><div class="qc-head">Quantity A</div><div class="qc-val">0.60<em>s</em></div></div>
+      <div class="qc-col"><div class="qc-head">Quantity B</div><div class="qc-val">0.58<em>t</em></div></div>
+    </div>`,
+    inputType:'qc',
+    correct:'D',
+    hint:'Try specific values. Let s = 0.58, t = 0.60. Then try s = 100, t = 101.',
+    explanation:`<strong>Answer: (D) — Cannot be determined.</strong><br>
+    Try s = 0.58, t = 0.60: 0.60(0.58) = 0.348 = 0.58(0.60) → equal.<br>
+    Try s = 1, t = 10: 0.60(1) = 0.60 &lt; 0.58(10) = 5.8 → B greater.<br>
+    Try s = 100, t = 101: 60 &gt; 58.58 → A greater. Relationship <strong>cannot be determined</strong>.`
+  },
+  {
+    num:3, type:'Quantitative Comparison',
+    dir:'Compare Quantity A and Quantity B. Select the best answer.',
+    stimulus:'<em>r</em> &lt; <em>s</em> &lt; <em>t</em> &lt; <em>x</em> &lt; <em>y</em> &lt; <em>z</em><br>The average (arithmetic mean) of <em>r, s, t, x, y,</em> and <em>z</em> is 0.',
+    body:`<div class="qc-wrap">
+      <div class="qc-col"><div class="qc-head">Quantity A</div><div class="qc-val"><em>r</em> + <em>s</em> + <em>t</em></div></div>
+      <div class="qc-col"><div class="qc-head">Quantity B</div><div class="qc-val">−(<em>x</em> + <em>y</em> + <em>z</em>)</div></div>
+    </div>`,
+    inputType:'qc',
+    correct:'C',
+    hint:'If the average of 6 numbers is 0, what is their sum? Then isolate r + s + t.',
+    explanation:`<strong>Answer: (C) — The two quantities are equal.</strong><br>
+    Average = 0 → sum = 0 → r + s + t + x + y + z = 0.<br>
+    Therefore r + s + t = −(x + y + z). Both quantities are equal.`
+  },
+  {
+    num:4, type:'Quantitative Comparison',
+    dir:'Compare Quantity A and Quantity B. Select the best answer.',
+    stimulus:'<em>x</em> &lt; 0',
+    body:`<div class="qc-wrap">
+      <div class="qc-col"><div class="qc-head">Quantity A</div><div class="qc-val"><em>x</em><sup>−2</sup></div></div>
+      <div class="qc-col"><div class="qc-head">Quantity B</div><div class="qc-val"><span class="fr"><span>1</span><span class="fb"></span><span>−(<em>x</em>²)</span></span></div></div>
+    </div>`,
+    inputType:'qc',
+    correct:'A',
+    hint:'Rewrite x⁻² as 1/x². What sign does −(x²) give when x < 0? Which is positive?',
+    explanation:`<strong>Answer: (A) — Quantity A is greater.</strong><br>
+    x⁻² = 1/x², which is always positive (since x ≠ 0).<br>
+    Quantity B = 1/(−x²) = −1/x², which is always negative when x &lt; 0.<br>
+    Positive &gt; Negative, so <strong>Quantity A is greater</strong>.`
+  },
+  {
+    num:5, type:'Quantitative Comparison',
+    dir:'Compare Quantity A and Quantity B. Select the best answer.',
+    stimulus:'In parallelogram <em>QRST</em> (not shown), the measure of angle <em>R</em> is (<em>y</em> + 15)°, and the measure of angle <em>S</em> is (225 − 2<em>y</em>)°.',
+    body:`<div class="qc-wrap">
+      <div class="qc-col"><div class="qc-head">Quantity A</div><div class="qc-val">The measure of angle <em>S</em></div></div>
+      <div class="qc-col"><div class="qc-head">Quantity B</div><div class="qc-val">90°</div></div>
+    </div>`,
+    inputType:'qc',
+    correct:'A',
+    hint:'Consecutive angles in a parallelogram are supplementary (add to 180°). Set up the equation and find y, then find angle S.',
+    explanation:`<strong>Answer: (A) — Quantity A is greater.</strong><br>
+    Consecutive angles in a parallelogram sum to 180°:<br>
+    (y + 15) + (225 − 2y) = 180 → 240 − y = 180 → y = 60.<br>
+    Angle S = 225 − 2(60) = 225 − 120 = <strong>105°</strong> &gt; 90°. Quantity A is greater.`
+  },
+  {
+    num:6, type:'Multiple Choice',
+    dir:'Select one answer choice.',
+    stimulus:'Charley bought 200 small items for $0.75 each in order to resell as many of them as possible at an open market. He rented a table at the market for $20.00 and sold a number of the items for $1.25 each. He gave the remaining items to a neighboring vendor. If his profit from the sale of the items at the market was $67.50, how many of the items did he sell?',
+    body:`<ul class="options" id="opts-6">
+      <li class="opt" onclick="selectOpt(this,'6','A')"><span class="opt-circle">A</span><span class="opt-key">(A)</span> 142</li>
+      <li class="opt" onclick="selectOpt(this,'6','B')"><span class="opt-circle">B</span><span class="opt-key">(B)</span> 158</li>
+      <li class="opt" onclick="selectOpt(this,'6','C')"><span class="opt-circle">C</span><span class="opt-key">(C)</span> 174</li>
+      <li class="opt" onclick="selectOpt(this,'6','D')"><span class="opt-circle">D</span><span class="opt-key">(D)</span> 182</li>
+      <li class="opt" onclick="selectOpt(this,'6','E')"><span class="opt-circle">E</span><span class="opt-key">(E)</span> 190</li>
+    </ul>`,
+    inputType:'mc', correct:'E',
+    hint:'Profit = Revenue − Cost. Total cost = 200 × $0.75 + $20. Revenue = 1.25x where x is items sold. Set Profit = $67.50.',
+    explanation:`<strong>Answer: (E) 190.</strong><br>
+    Total cost = 200(0.75) + 20 = $150 + $20 = $170.<br>
+    Profit = Revenue − Cost → 67.50 = 1.25x − 170 → 1.25x = 237.50 → x = <strong>190</strong>.`
+  },
+  {
+    num:7, type:'Multiple Choice',
+    dir:'Select one answer choice.',
+    stimulus:`<div class="diagram-wrap">
+<!-- Q7: Trapezoid ABCD
+     Right angles at C (top-right) and D (bottom-right) → right side CD is vertical
+     BC (top, shorter) and AD (bottom, longer, AD=2·BC)
+     A = bottom-left, D = bottom-right, B = top above A (slanted), C = top-right
+     M = midpoint of AB → shaded triangle = AMD (bottom-left triangle)
+     Layout: A(50,130), D(230,130), C(230,50), B(110,50)
+     M = midpoint of AB = ((50+110)/2, (130+50)/2) = (80,90)
+-->
+<svg viewBox="0 0 300 170" width="300" height="170" xmlns="http://www.w3.org/2000/svg" style="font-family:'DM Sans',sans-serif;overflow:visible">
+  <!-- Shaded triangle AMD: A(50,130), M(80,90), D(230,130) -->
+  <polygon points="50,130 80,90 230,130" fill="rgba(100,130,200,0.3)" stroke="none"/>
+  <!-- Trapezoid outline: A(50,130)→D(230,130)→C(230,50)→B(110,50)→A -->
+  <polygon points="50,130 230,130 230,50 110,50" fill="none" stroke="#1E2A3B" stroke-width="2" stroke-linejoin="round"/>
+  <!-- Right angle at D (bottom-right) -->
+  <rect x="222" y="122" width="8" height="8" fill="none" stroke="#1E2A3B" stroke-width="1.2"/>
+  <!-- Right angle at C (top-right) -->
+  <rect x="222" y="50" width="8" height="8" fill="none" stroke="#1E2A3B" stroke-width="1.2"/>
+  <!-- AB line: A(50,130)→B(110,50) -->
+  <line x1="50" y1="130" x2="110" y2="50" stroke="#1E2A3B" stroke-width="2"/>
+  <!-- M point (midpoint of AB) -->
+  <circle cx="80" cy="90" r="3" fill="#1E2A3B"/>
+  <!-- AM segment (already covered by AB) and MD line: M(80,90)→D(230,130) -->
+  <line x1="80" y1="90" x2="230" y2="130" stroke="#1E2A3B" stroke-width="1.5"/>
+  <!-- Labels -->
+  <text x="36" y="145" font-size="13" font-style="italic" fill="#1E2A3B" font-family="Georgia,serif">A</text>
+  <text x="104" y="42" font-size="13" font-style="italic" fill="#1E2A3B" font-family="Georgia,serif">B</text>
+  <text x="236" y="42" font-size="13" font-style="italic" fill="#1E2A3B" font-family="Georgia,serif">C</text>
+  <text x="236" y="145" font-size="13" font-style="italic" fill="#1E2A3B" font-family="Georgia,serif">D</text>
+  <text x="58" y="86" font-size="13" font-style="italic" fill="#1E2A3B" font-family="Georgia,serif">M</text>
+</svg></div>
+    In the figure above, angle <em>BCD</em> and angle <em>ADC</em> are right angles, <em>AD</em> = 2(<em>BC</em>), and <em>M</em> is the midpoint of side <em>AB</em>. If the area of the shaded region is 10, what is the area of <em>ABCD</em>?`,
+    body:`<ul class="options" id="opts-7">
+      <li class="opt" onclick="selectOpt(this,'7','A')"><span class="opt-circle">A</span><span class="opt-key">(A)</span> 20</li>
+      <li class="opt" onclick="selectOpt(this,'7','B')"><span class="opt-circle">B</span><span class="opt-key">(B)</span> 25</li>
+      <li class="opt" onclick="selectOpt(this,'7','C')"><span class="opt-circle">C</span><span class="opt-key">(C)</span> 30</li>
+      <li class="opt" onclick="selectOpt(this,'7','D')"><span class="opt-circle">D</span><span class="opt-key">(D)</span> 35</li>
+      <li class="opt" onclick="selectOpt(this,'7','E')"><span class="opt-circle">E</span><span class="opt-key">(E)</span> 40</li>
+    </ul>`,
+    inputType:'mc', correct:'C',
+    hint:'Let BC = x, AD = 2x, height = k. Area of trapezoid ABCD = ½(x + 2x)k = 3kx/2. Area of shaded triangle AMD = ½ × 2x × (k/2) = kx/2. If that equals 10...',
+    explanation:`<strong>Answer: (C) 30.</strong><br>
+    Let BC = x, AD = 2x, height = k. Area of △AMD (base AD = 2x, height = k/2 since M is midpoint of AB) = ½(2x)(k/2) = kx/2 = 10 → kx = 20.<br>
+    Area of trapezoid ABCD = ½(BC + AD)(k) = ½(3x)(k) = 3kx/2 = 3(20)/2 = <strong>30</strong>.`
+  },
+  {
+    num:8, type:'Multiple Choice',
+    dir:'Select one answer choice.',
+    stimulus:'If <em>d</em> is the standard deviation of the three numbers <em>w</em>, <em>p</em>, and <em>u</em>, what is the standard deviation of the three numbers <em>w</em> + 6, <em>p</em> + 6, and <em>u</em> + 6?',
+    body:`<ul class="options" id="opts-8">
+      <li class="opt" onclick="selectOpt(this,'8','A')"><span class="opt-circle">A</span><span class="opt-key">(A)</span> <em>d</em></li>
+      <li class="opt" onclick="selectOpt(this,'8','B')"><span class="opt-circle">B</span><span class="opt-key">(B)</span> <em>d</em> + 6</li>
+      <li class="opt" onclick="selectOpt(this,'8','C')"><span class="opt-circle">C</span><span class="opt-key">(C)</span> <em>d</em> + 18</li>
+      <li class="opt" onclick="selectOpt(this,'8','D')"><span class="opt-circle">D</span><span class="opt-key">(D)</span> 6<em>d</em></li>
+      <li class="opt" onclick="selectOpt(this,'8','E')"><span class="opt-circle">E</span><span class="opt-key">(E)</span> 18<em>d</em></li>
+    </ul>`,
+    inputType:'mc', correct:'A',
+    hint:'Standard deviation measures spread around the mean. If every value shifts by the same constant, does the spread change?',
+    explanation:`<strong>Answer: (A) <em>d</em>.</strong><br>
+    Adding a constant to every value shifts the entire distribution by that amount but does <em>not</em> change the spread. The mean increases by 6, but each value's distance from the mean stays exactly the same. Therefore, the standard deviation remains <strong><em>d</em></strong>.`
+  },
+  {
+    num:9, type:'Multiple Choice',
+    dir:'Select one answer choice.',
+    stimulus:'For how many different values of <em>x</em> is (2<em>x</em> + 4)(<em>x</em> − 3)(<em>x</em> + 2)² = 0?',
+    body:`<ul class="options" id="opts-9">
+      <li class="opt" onclick="selectOpt(this,'9','A')"><span class="opt-circle">A</span><span class="opt-key">(A)</span> One</li>
+      <li class="opt" onclick="selectOpt(this,'9','B')"><span class="opt-circle">B</span><span class="opt-key">(B)</span> Two</li>
+      <li class="opt" onclick="selectOpt(this,'9','C')"><span class="opt-circle">C</span><span class="opt-key">(C)</span> Three</li>
+      <li class="opt" onclick="selectOpt(this,'9','D')"><span class="opt-circle">D</span><span class="opt-key">(D)</span> Four</li>
+      <li class="opt" onclick="selectOpt(this,'9','E')"><span class="opt-circle">E</span><span class="opt-key">(E)</span> An infinite number</li>
+    </ul>`,
+    inputType:'mc', correct:'B',
+    hint:'Set each factor equal to zero: 2x+4=0, x−3=0, x+2=0. What are the distinct solutions? Note (x+2)² gives the same root as x+2.',
+    explanation:`<strong>Answer: (B) Two.</strong><br>
+    2x + 4 = 0 → x = −2 &nbsp;|&nbsp; x − 3 = 0 → x = 3 &nbsp;|&nbsp; (x + 2)² = 0 → x = −2 (repeated).<br>
+    Distinct values: x = −2 and x = 3. That's <strong>two</strong> different values.`
+  },
+  {
+    num:10, type:'Multiple Choice',
+    dir:'Select one answer choice.',
+    stimulus:`<div class="diagram-wrap">
+<svg viewBox="0 0 480 155" width="480" height="155" xmlns="http://www.w3.org/2000/svg" style="max-width:100%;overflow:visible">
+  <!--
+    Exact replica of ETS PDF bell curve (second image):
+    - Wide, low, flat bell — very gradual rise from tails
+    - Only 2 vertical dividers: at m−d and m+d (tall), plus centre tick at m
+    - 0.02 labels: upper-left and upper-right of tails, well above baseline (~y=95)
+    - 0.14 labels: inside shoulders, below 0.02 (~y=95 but inward)
+    - 0.34 labels: high inside central bands (~y=42)
+    - Diagonal slash marks under 0.02 labels (angled down-right for left, down-left for right)
+    - All 5 x-axis labels sit below baseline
+    Coords: baseline y=118, peak y=16
+    x positions: m-2d=78, m-d=158, m=238, m+d=318, m+2d=398
+  -->
+
+  <!-- BELL CURVE — wide, flat shape matching image -->
+  <path d="
+    M 10,118
+    C 25,118 40,117 55,116
+    C 65,115 72,113 82,109
+    C 94,104 106,96  120,86
+    C 134,76  148,62  163,50
+    C 178,38  198,24  218,18
+    C 228,15  233,14  238,14
+    C 243,14  248,15  258,18
+    C 278,24  298,38  313,50
+    C 328,62  342,76  356,86
+    C 370,96  382,104 394,109
+    C 404,113 411,115 421,116
+    C 436,117 451,118 466,118"
+    fill="none" stroke="#1E2A3B" stroke-width="1.8" stroke-linecap="round"/>
+
+  <!-- BASELINE -->
+  <line x1="10" y1="118" x2="466" y2="118" stroke="#1E2A3B" stroke-width="1.5"/>
+
+  <!-- TICK MARKS on baseline at all 5 positions -->
+  <line x1="78"  y1="115" x2="78"  y2="121" stroke="#1E2A3B" stroke-width="1.5"/>
+  <line x1="158" y1="115" x2="158" y2="121" stroke="#1E2A3B" stroke-width="1.5"/>
+  <line x1="238" y1="115" x2="238" y2="121" stroke="#1E2A3B" stroke-width="1.5"/>
+  <line x1="318" y1="115" x2="318" y2="121" stroke="#1E2A3B" stroke-width="1.5"/>
+  <line x1="398" y1="115" x2="398" y2="121" stroke="#1E2A3B" stroke-width="1.5"/>
+
+  <!-- VERTICAL DIVIDERS — only at m-d, m, m+d (matching image: 2 tall + centre) -->
+  <!-- m-d divider: x=158, curve height here ~50 -->
+  <line x1="158" y1="118" x2="158" y2="50" stroke="#1E2A3B" stroke-width="1.2"/>
+  <!-- m centre divider: x=238, curve peak ~14 -->
+  <line x1="238" y1="118" x2="238" y2="14" stroke="#1E2A3B" stroke-width="1.2"/>
+  <!-- m+d divider: x=318, curve height ~50 -->
+  <line x1="318" y1="118" x2="318" y2="50" stroke="#1E2A3B" stroke-width="1.2"/>
+
+  <!-- PROBABILITY LABELS inside curve -->
+  <!-- 0.02 left tail — sits above and left of the diagonal tick, ~y=96 -->
+  <text x="52"  y="96" text-anchor="middle" font-size="11.5" fill="#1E2A3B" font-family="Georgia,serif">0.02</text>
+  <!-- 0.14 left shoulder — inside between m-2d and m-d, lower than 0.34 -->
+  <text x="118" y="90" text-anchor="middle" font-size="11.5" fill="#1E2A3B" font-family="Georgia,serif">0.14</text>
+  <!-- 0.34 left central — between m-d and m, high up -->
+  <text x="196" y="44" text-anchor="middle" font-size="11.5" fill="#1E2A3B" font-family="Georgia,serif">0.34</text>
+  <!-- 0.34 right central — between m and m+d -->
+  <text x="278" y="44" text-anchor="middle" font-size="11.5" fill="#1E2A3B" font-family="Georgia,serif">0.34</text>
+  <!-- 0.14 right shoulder -->
+  <text x="358" y="90" text-anchor="middle" font-size="11.5" fill="#1E2A3B" font-family="Georgia,serif">0.14</text>
+  <!-- 0.02 right tail -->
+  <text x="424" y="96" text-anchor="middle" font-size="11.5" fill="#1E2A3B" font-family="Georgia,serif">0.02</text>
+
+  <!-- DIAGONAL SLASH MARKS under 0.02 labels (like the image: \ for left, / for right) -->
+  <!-- Left slash: starts upper-left of tick area, goes down-right to baseline -->
+  <line x1="64" y1="101" x2="78" y2="116" stroke="#1E2A3B" stroke-width="1.3"/>
+  <!-- Right slash: starts upper-right, goes down-left to baseline -->
+  <line x1="412" y1="101" x2="398" y2="116" stroke="#1E2A3B" stroke-width="1.3"/>
+
+  <!-- X-AXIS LABELS below baseline -->
+  <text x="78"  y="136" text-anchor="middle" font-size="11" fill="#1E2A3B" font-family="Georgia,serif"><tspan font-style="italic">m</tspan>−2<tspan font-style="italic">d</tspan></text>
+  <text x="158" y="136" text-anchor="middle" font-size="11" fill="#1E2A3B" font-family="Georgia,serif"><tspan font-style="italic">m</tspan>−<tspan font-style="italic">d</tspan></text>
+  <text x="238" y="136" text-anchor="middle" font-size="11" fill="#1E2A3B" font-family="Georgia,serif" font-style="italic">m</text>
+  <text x="318" y="136" text-anchor="middle" font-size="11" fill="#1E2A3B" font-family="Georgia,serif"><tspan font-style="italic">m</tspan>+<tspan font-style="italic">d</tspan></text>
+  <text x="398" y="136" text-anchor="middle" font-size="11" fill="#1E2A3B" font-family="Georgia,serif"><tspan font-style="italic">m</tspan>+2<tspan font-style="italic">d</tspan></text>
+</svg></div>
+    The figure above shows a normal distribution with mean <em>m</em> and standard deviation <em>d</em>, including approximate probabilities for the six intervals shown.<br><br>
+    The distribution of heights of a large group of students is approximately normal with mean 140 cm and standard deviation 2 cm. One student is selected at random. Which is the best estimate of the probability the student has a height <strong>greater than 141 cm</strong>?`,
+    body:`<ul class="options" id="opts-10">
+      <li class="opt" onclick="selectOpt(this,'10','A')"><span class="opt-circle">A</span><span class="opt-key">(A)</span> 0.14</li>
+      <li class="opt" onclick="selectOpt(this,'10','B')"><span class="opt-circle">B</span><span class="opt-key">(B)</span> 0.16</li>
+      <li class="opt" onclick="selectOpt(this,'10','C')"><span class="opt-circle">C</span><span class="opt-key">(C)</span> 0.31</li>
+      <li class="opt" onclick="selectOpt(this,'10','D')"><span class="opt-circle">D</span><span class="opt-key">(D)</span> 0.48</li>
+      <li class="opt" onclick="selectOpt(this,'10','E')"><span class="opt-circle">E</span><span class="opt-key">(E)</span> 0.50</li>
+    </ul>`,
+    inputType:'mc', correct:'C',
+    hint:'141 is halfway between the mean (140) and one SD above the mean (142). So P(>141) is between P(>142) and P(>140). P(>140) = 50%, P(>142) = 16%. What range does 141 fall in?',
+    explanation:`<strong>Answer: (C) 0.31.</strong><br>
+    Mean = 140, SD = 2. So 141 is halfway between m and m+d (142).<br>
+    P(&gt;142) = 0.14 + 0.02 = 0.16. P(&gt;140) = 0.50. P(&gt;141) lies between these.<br>
+    P(141 to 142) ≈ half of 0.34 = 0.17. So P(&gt;141) ≈ 0.17 + 0.14 = 0.31. Best estimate: <strong>0.31</strong>.`
+  },
+  {
+    num:11, type:'Numeric Entry',
+    dir:'Enter your answer in the box.',
+    stimulus:`<div class="diagram-wrap">
+<!-- Q11: Right triangle from PDF
+     Right angle at bottom-left corner
+     Vertical leg = x (left side, going up)
+     Horizontal leg = 2x (bottom, going right)
+     Hypotenuse = c (from top-left to bottom-right)
+     Vertices: A=bottom-left(60,120), B=top-left(60,30), C=bottom-right(180,120)
+-->
+<svg viewBox="0 0 250 150" width="250" height="150" xmlns="http://www.w3.org/2000/svg" style="font-family:'DM Sans',sans-serif;overflow:visible">
+  <!-- Triangle -->
+  <polygon points="60,120 60,30 180,120" fill="none" stroke="#1E2A3B" stroke-width="2" stroke-linejoin="round"/>
+  <!-- Right angle marker at bottom-left (60,120) -->
+  <polyline points="60,108 72,108 72,120" fill="none" stroke="#1E2A3B" stroke-width="1.5"/>
+  <!-- Label x on left side (vertical leg), centred between (60,30) and (60,120) -->
+  <text x="44" y="78" text-anchor="middle" font-size="13" font-style="italic" fill="#1E2A3B" font-family="Georgia,serif">x</text>
+  <!-- Label c on hypotenuse, midpoint of (60,30)→(180,120) = (120,75), offset upper-right -->
+  <text x="128" y="62" text-anchor="middle" font-size="13" font-style="italic" fill="#1E2A3B" font-family="Georgia,serif">c</text>
+  <!-- Label 2x on bottom (horizontal leg), centred between (60,120) and (180,120) -->
+  <text x="120" y="140" text-anchor="middle" font-size="13" font-style="italic" fill="#1E2A3B" font-family="Georgia,serif">2x</text>
+</svg></div>
+    If <em>c</em> = √31.25 in the triangle shown, what is the value of <em>x</em>?`,
+    body:`<div class="num-wrap">
+      <div class="num-lbl">Enter the value of x:</div>
+      <input type="number" class="num-inp" id="num-11" step="any" placeholder="x = ?">
+    </div>`,
+    inputType:'numeric', correct:'2.5',
+    hint:'This is a right triangle with legs x and 2x, hypotenuse c. Apply the Pythagorean theorem: x² + (2x)² = c².',
+    explanation:`<strong>Answer: 2.5.</strong><br>
+    By the Pythagorean theorem: x² + (2x)² = c²<br>
+    x² + 4x² = (√31.25)² → 5x² = 31.25 → x² = 6.25 → x = √6.25 = <strong>2.5</strong>.`
+  },
+  {
+    num:12, type:'Multiple Choice',
+    dir:'Select one answer choice.',
+    stimulus:'If <em>x</em> and <em>y</em> are positive and <em>x</em> is <span class="fr"><span>27</span><span class="fb"></span><span>36</span></span> of <em>y</em>, then <em>x</em> is what percent of <em>y</em>?',
+    body:`<ul class="options" id="opts-12">
+      <li class="opt" onclick="selectOpt(this,'12','A')"><span class="opt-circle">A</span><span class="opt-key">(A)</span> 9%</li>
+      <li class="opt" onclick="selectOpt(this,'12','B')"><span class="opt-circle">B</span><span class="opt-key">(B)</span> 33%</li>
+      <li class="opt" onclick="selectOpt(this,'12','C')"><span class="opt-circle">C</span><span class="opt-key">(C)</span> 75%</li>
+      <li class="opt" onclick="selectOpt(this,'12','D')"><span class="opt-circle">D</span><span class="opt-key">(D)</span> 133%</li>
+      <li class="opt" onclick="selectOpt(this,'12','E')"><span class="opt-circle">E</span><span class="opt-key">(E)</span> 175%</li>
+    </ul>`,
+    inputType:'mc', correct:'C',
+    hint:'Simplify 27/36 to lowest terms, then convert to a decimal, then to a percent.',
+    explanation:`<strong>Answer: (C) 75%.</strong><br>
+    27/36 = 3/4 = 0.75 = <strong>75%</strong>. So x is 75% of y.`
+  },
+  {
+    num:13, type:'Multiple Choice',
+    dir:'Select one answer choice.',
+    stimulus:'In a group of 200 college students, each student is a member of the orchestra or the tennis club or both. Of the 200 students, 150 students are members of the orchestra only and 10 students are members of both the orchestra and the tennis club. If a student is to be selected at random from the 200 students, what is the probability that the student selected will be a member of the tennis club only?',
+    body:`<ul class="options" id="opts-13">
+      <li class="opt" onclick="selectOpt(this,'13','A')"><span class="opt-circle">A</span><span class="opt-key">(A)</span> <span class="fr"><span>1</span><span class="fb"></span><span>40</span></span></li>
+      <li class="opt" onclick="selectOpt(this,'13','B')"><span class="opt-circle">B</span><span class="opt-key">(B)</span> <span class="fr"><span>1</span><span class="fb"></span><span>20</span></span></li>
+      <li class="opt" onclick="selectOpt(this,'13','C')"><span class="opt-circle">C</span><span class="opt-key">(C)</span> <span class="fr"><span>1</span><span class="fb"></span><span>5</span></span></li>
+      <li class="opt" onclick="selectOpt(this,'13','D')"><span class="opt-circle">D</span><span class="opt-key">(D)</span> <span class="fr"><span>1</span><span class="fb"></span><span>4</span></span></li>
+      <li class="opt" onclick="selectOpt(this,'13','E')"><span class="opt-circle">E</span><span class="opt-key">(E)</span> <span class="fr"><span>3</span><span class="fb"></span><span>4</span></span></li>
+    </ul>`,
+    inputType:'mc', correct:'C',
+    hint:'Orchestra only = 150. Both = 10. Total orchestra = 160. Tennis only = 200 − 150 − 10 = ?',
+    explanation:`<strong>Answer: (C) 1/5.</strong><br>
+    Orchestra only: 150. Both: 10. Tennis only: 200 − 150 − 10 = 40.<br>
+    Probability = 40/200 = 1/5.`
+  },
+  {
+    num:14, type:'Multiple Choice',
+    dir:'Select one answer choice.',
+    stimulus:'If −1 &lt; 2<em>x</em> − 1 &lt; 3 and 1 &lt; <em>y</em> + 2 &lt; 5, which of the following could be true?',
+    body:`<ul class="options" id="opts-14">
+      <li class="opt" onclick="selectOpt(this,'14','A')"><span class="opt-circle">A</span><span class="opt-key">(A)</span> x = 0 and y = 0</li>
+      <li class="opt" onclick="selectOpt(this,'14','B')"><span class="opt-circle">B</span><span class="opt-key">(B)</span> x = 1 and y = −2</li>
+      <li class="opt" onclick="selectOpt(this,'14','C')"><span class="opt-circle">C</span><span class="opt-key">(C)</span> x = 1.2 and y = −1.2</li>
+      <li class="opt" onclick="selectOpt(this,'14','D')"><span class="opt-circle">D</span><span class="opt-key">(D)</span> x = 1.5 and y = 0.5</li>
+      <li class="opt" onclick="selectOpt(this,'14','E')"><span class="opt-circle">E</span><span class="opt-key">(E)</span> x = 2 and y = 2.5</li>
+    </ul>`,
+    inputType:'mc', correct:'D',
+    hint:'Simplify both inequalities first. For the first: add 1, then divide by 2. For the second: subtract 2. Then check each answer choice.',
+    explanation:`<strong>Answer: (D) x = 1.5 and y = 0.5.</strong><br>
+    −1 &lt; 2x − 1 &lt; 3 → add 1: 0 &lt; 2x &lt; 4 → divide by 2: 0 &lt; x &lt; 2.<br>
+    1 &lt; y + 2 &lt; 5 → subtract 2: −1 &lt; y &lt; 3.<br>
+    Check (D): x = 1.5 ✓ (between 0 and 2); y = 0.5 ✓ (between −1 and 3). <strong>Valid.</strong>`
+  },
+  {
+    num:15, type:'Select All That Apply',
+    dir:'Select <strong>all</strong> answer choices that apply.',
+    stimulus:`George's total monthly earnings consist of a base monthly salary of $2,000 plus up to three commissions. The first commission is equal to 10% of his monthly sales up to $10,000; the second commission is equal to 20% of monthly sales in excess of $10,000 and up to $30,000; the third commission is equal to 50% of monthly sales in excess of $30,000.
+    <br><br>Which of the following statements <u>individually</u> provide sufficient additional information to determine George's total earnings last month?`,
+    body:`<ul class="options" id="opts-15">
+      <li class="opt" onclick="toggleOpt(this,'15','A')"><span class="opt-circle" style="border-radius:4px">A</span><span class="opt-key">A.</span> Last month, George's second commission was $3,000 greater than his first commission.</li>
+      <li class="opt" onclick="toggleOpt(this,'15','B')"><span class="opt-circle" style="border-radius:4px">B</span><span class="opt-key">B.</span> Last month, George's third commission was $5,000 greater than his first commission.</li>
+      <li class="opt" onclick="toggleOpt(this,'15','C')"><span class="opt-circle" style="border-radius:4px">C</span><span class="opt-key">C.</span> Last month, George's third commission was $2,000 greater than his second commission.</li>
+    </ul>`,
+    inputType:'sata', correct:'BC',
+    hint:'If there is a third commission, sales exceed $30,000. That fixes Commission 1 = $1,000 and Commission 2 = $4,000. Check which statements then uniquely determine Commission 3.',
+    explanation:`<strong>Answer: B and C.</strong><br>
+    If there is a third commission: Sales &gt; $30k → Commission 1 = 10% × $10k = $1,000; Commission 2 = 20% × $20k = $4,000.<br>
+    <strong>A:</strong> 2nd commission = $3k greater than 1st → 2nd = $4k — this is the max possible 2nd commission, so a 3rd <em>may or may not</em> exist. Insufficient.<br>
+    <strong>B:</strong> 3rd = 1st + $5k = $1k + $5k = $6k. Total = $2k + $1k + $4k + $6k = $13k. ✓ Sufficient.<br>
+    <strong>C:</strong> 3rd = 2nd + $2k = $4k + $2k = $6k. Total = $13k. ✓ Sufficient.`
+  }
+];
+
+// ════════════════════════════════════════════
+// STATE
+// ════════════════════════════════════════════
+const ST = {
+  cur:0, answers:{}, xp:0,
+  submitted:false, reviewMode:false,
+  stats:{correct:0,wrong:0,skip:0},
+  timeUsed:0, timerInterval:null
+};
+
+let MODE = 'practice';
+let _selectedMode = 'practice';
+const TOTAL_SECS = 35 * 60;
+
+// ── MODE SELECTION ──
+function selectMode(mode) {
+  _selectedMode = mode;
+  document.querySelectorAll('.mode-card').forEach(c => c.classList.remove('selected'));
+  document.getElementById('mcard-' + mode).classList.add('selected');
+  const btn = document.getElementById('btn-start-mode');
+  if (mode === 'test') {
+    btn.textContent = '⏱️ Start Timed Test';
+    btn.className = 'btn btn-gold';
+  } else {
+    btn.textContent = '🎮 Start Practice Mode';
+    btn.className = 'btn btn-primary';
+  }
+}
+
+function startSelectedMode() {
+  MODE = _selectedMode;
+  resetST();
+  buildDots();
+  showScreen('screen-q');
+  document.getElementById('botnav').style.display = '';
+  applyModeToUI();
+  renderQ(0);
+  if (MODE === 'test') startCountdown(TOTAL_SECS);
+}
+
+function resetST() {
+  if (ST.timerInterval) clearInterval(ST.timerInterval);
+  ST.cur=0; ST.answers={}; ST.xp=0;
+  ST.submitted=false; ST.reviewMode=false;
+  ST.stats={correct:0,wrong:0,skip:0};
+  ST.timeUsed=0; ST.timerInterval=null;
+  updateXP();
+}
+
+function applyModeToUI() {
+  const isTest = MODE === 'test';
+  document.getElementById('timer-box').style.display = isTest ? '' : 'none';
+  document.getElementById('hint-btn').style.display = isTest ? 'none' : '';
+  document.getElementById('submit-btn').style.display = isTest ? 'none' : '';
+  if (isTest) {
+    document.getElementById('btn-skip').style.display = 'none';
+  }
+}
+
+// ── TIMER ──
+function startCountdown(remaining) {
+  updateTimerEl(remaining);
+  ST.timerInterval = setInterval(() => {
+    remaining--;
+    ST.timeUsed++;
+    updateTimerEl(remaining);
+    saveGame();
+    if (remaining <= 0) { clearInterval(ST.timerInterval); ST.timerInterval = null; timeUp(); }
+  }, 1000);
+}
+
+function updateTimerEl(secs) {
+  const m = Math.floor(secs/60), s = secs%60;
+  document.getElementById('timer-txt').textContent = m + ':' + String(s).padStart(2,'0');
+  const box = document.getElementById('timer-box');
+  if (secs <= 300) box.classList.add('urgent');
+  else box.classList.remove('urgent');
+}
+
+function timeUp() {
+  const ov = document.createElement('div');
+  ov.className = 'timeup-overlay';
+  ov.innerHTML = `<div class="timeup-box">
+    <div class="timeup-icon">⏰</div>
+    <div class="timeup-title">Time's Up!</div>
+    <div class="timeup-sub">35 minutes have elapsed. Your answers are being submitted now.</div>
+    <button class="btn btn-gold" style="width:100%;margin-top:4px" onclick="this.closest('.timeup-overlay').remove();finalSubmit()">See My Results →</button>
+  </div>`;
+  document.body.appendChild(ov);
+}
+
+function fmtTime(secs) {
+  const m = Math.floor(secs/60), s = secs%60;
+  return m + 'm ' + String(s).padStart(2,'0') + 's';
+}
+
+// ── XP ──
+function updateXP() {
+  const pct = Math.min(100, ST.xp/300*100);
+  document.getElementById('xp-bar').style.width = pct+'%';
+  document.getElementById('xp-disp').textContent = ST.xp+' XP';
+  document.getElementById('xp-num').textContent = ST.xp+' / 300';
+}
+
+// ── SCREENS ──
+function showScreen(id) {
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  window.scrollTo(0,0);
+}
+
+function goTitle() {
+  if (ST.timerInterval) clearInterval(ST.timerInterval);
+  showScreen('screen-title');
+  selectMode('practice');
+}
+
+function startGame() { selectMode('practice'); startSelectedMode(); }
+
+function loadGame() {
+  const saved = localStorage.getItem('fsh_gre_s4');
+  if (saved) {
+    const d = JSON.parse(saved);
+    Object.assign(ST, d);
+    MODE = d.mode || 'practice';
+    updateXP(); buildDots();
+    showScreen('screen-q');
+    document.getElementById('botnav').style.display = '';
+    applyModeToUI();
+    renderQ(ST.cur);
+    if (MODE === 'test' && !ST.submitted) {
+      const rem = TOTAL_SECS - ST.timeUsed;
+      if (rem > 0) startCountdown(rem); else timeUp();
+    }
+  } else {
+    showScreen('screen-title');
+  }
+}
+
+function saveGame() {
+  localStorage.setItem('fsh_gre_s4', JSON.stringify({
+    cur:ST.cur, answers:ST.answers, xp:ST.xp,
+    submitted:ST.submitted, stats:ST.stats,
+    timeUsed:ST.timeUsed, mode:MODE
+  }));
+}
+
+// ── DOTS ──
+function buildDots() {
+  const c = document.getElementById('prog-dots');
+  c.innerHTML = '';
+  QS.forEach((q,i) => {
+    const d = document.createElement('div');
+    d.className = 'pdot'; d.textContent = i+1; d.id = 'pdot-'+i;
+    d.onclick = () => jumpTo(i);
+    c.appendChild(d);
+  });
+}
+
+function updateDots() {
+  QS.forEach((q,i) => {
+    const d = document.getElementById('pdot-'+i);
+    if (!d) return;
+    d.className = 'pdot';
+    if (ST.submitted) {
+      if (!ST.answers[q.num]) d.classList.add('skip');
+      else if (isCorrect(q.num)) d.classList.add('ok');
+      else d.classList.add('bad');
+    } else {
+      if (i === ST.cur) d.classList.add('cur');
+      else if (ST.answers[q.num] !== undefined) d.classList.add('ans');
+    }
+  });
+  document.getElementById('q-num-lbl').textContent = ST.cur+1;
+}
+
+// ── RENDER ──
+function renderQ(idx) {
+  ST.cur = idx;
+  const q = QS[idx];
+  document.getElementById('q-badge').textContent = `Question ${idx+1} of ${QS.length}`;
+  document.getElementById('q-type-tag').textContent = q.type;
+
+  const dirEl = document.getElementById('q-dir');
+  dirEl.innerHTML = q.type === 'Quantitative Comparison'
+    ? 'Compare Quantity A and Quantity B. Select: <strong>(A)</strong> Quantity A is greater &nbsp;·&nbsp; <strong>(B)</strong> Quantity B is greater &nbsp;·&nbsp; <strong>(C)</strong> The two quantities are equal &nbsp;·&nbsp; <strong>(D)</strong> The relationship cannot be determined'
+    : q.dir;
+
+  let html = '';
+  if (q.stimulus) html += `<div class="q-stimulus">${q.stimulus}</div>`;
+  html += q.body;
+  document.getElementById('q-body').innerHTML = html;
+
+  const ia = document.getElementById('q-input-area');
+  if (q.inputType === 'qc') {
+    ia.innerHTML = `<ul class="options" id="opts-${q.num}">
+      <li class="opt" onclick="selectOpt(this,'${q.num}','A')"><span class="opt-circle">A</span><span class="opt-key">(A)</span>&nbsp; Quantity A is greater.</li>
+      <li class="opt" onclick="selectOpt(this,'${q.num}','B')"><span class="opt-circle">B</span><span class="opt-key">(B)</span>&nbsp; Quantity B is greater.</li>
+      <li class="opt" onclick="selectOpt(this,'${q.num}','C')"><span class="opt-circle">C</span><span class="opt-key">(C)</span>&nbsp; The two quantities are equal.</li>
+      <li class="opt" onclick="selectOpt(this,'${q.num}','D')"><span class="opt-circle">D</span><span class="opt-key">(D)</span>&nbsp; The relationship cannot be determined from the information given.</li>
+    </ul>`;
+  } else { ia.innerHTML = ''; }
+
+  // Show/hide hint & submit based on mode
+  const isTest = MODE === 'test';
+  document.getElementById('hint-btn').style.display = (isTest || ST.reviewMode) ? 'none' : '';
+  document.getElementById('submit-btn').style.display = (isTest || ST.reviewMode) ? 'none' : '';
+  document.getElementById('action-row').style.display = (isTest || ST.reviewMode) ? 'none' : '';
+
+  document.getElementById('q-feedback').innerHTML = '';
+  document.getElementById('q-explanation').innerHTML = '';
+  document.getElementById('q-explanation').classList.remove('show');
+
+  restoreAnswer(q);
+
+  // Nav
+  const isLast = idx === QS.length-1;
+  document.getElementById('btn-back').disabled = idx === 0;
+  document.getElementById('btn-next').style.display = isLast ? 'none' : '';
+  document.getElementById('btn-skip').style.display = (isLast || isTest || ST.reviewMode) ? 'none' : '';
+  const fsBtn = document.getElementById('btn-submit-final');
+  fsBtn.style.display = (isLast && !ST.reviewMode) ? '' : 'none';
+  if (isTest) {
+    fsBtn.textContent = '📋 Submit Test';
+    fsBtn.className = 'btn btn-gold';
+  } else {
+    fsBtn.textContent = 'Submit All';
+    fsBtn.className = 'btn btn-gold';
+  }
+
+  updateNav(); updateDots();
+  if (ST.reviewMode) setTimeout(applyReview, 50);
+}
+
+function updateNav() {
+  const ans = Object.keys(ST.answers).length;
+  const ctr = document.getElementById('nav-ctr');
+  if (MODE === 'test' && !ST.submitted) {
+    ctr.textContent = `${ans}/${QS.length} answered · ${fmtTime(ST.timeUsed)} elapsed`;
+  } else {
+    ctr.textContent = `${ans}/${QS.length} answered`;
+  }
+}
+
+function restoreAnswer(q) {
+  const val = ST.answers[q.num];
+  if (!val) return;
+  if (q.inputType === 'mc' || q.inputType === 'qc') {
+    document.querySelectorAll(`#opts-${q.num} .opt`).forEach(o => {
+      const key = o.querySelector('.opt-circle')?.textContent?.trim();
+      if (key === val) o.classList.add('sel');
+    });
+  } else if (q.inputType === 'sata') {
+    document.querySelectorAll(`#opts-${q.num} .opt`).forEach(o => {
+      const key = o.querySelector('.opt-circle')?.textContent?.trim();
+      if (key && val.includes(key)) o.classList.add('sel');
+    });
+  } else if (q.inputType === 'numeric') {
+    const inp = document.getElementById(`num-${q.num}`);
+    if (inp) inp.value = val;
+  }
+}
+
+// ── OPTION SELECTION ──
+function selectOpt(el, qnum, key) {
+  if (ST.submitted) return;
+  el.closest('ul').querySelectorAll('.opt').forEach(o => o.classList.remove('sel'));
+  el.classList.add('sel');
+  ST.answers[parseInt(qnum)] = key;
+  updateNav(); saveGame(); updateDots();
+  // Timed mode: auto-advance after short delay
+  if (MODE === 'test' && ST.cur < QS.length-1) setTimeout(() => goQ(1), 350);
+}
+
+function toggleOpt(el, qnum, key) {
+  if (ST.submitted) return;
+  el.classList.toggle('sel');
+  const keys = Array.from(el.closest('ul').querySelectorAll('.opt.sel'))
+    .map(o => o.querySelector('.opt-circle')?.textContent?.trim()).filter(Boolean).sort().join('');
+  if (keys) ST.answers[parseInt(qnum)] = keys;
+  else delete ST.answers[parseInt(qnum)];
+  updateNav(); saveGame(); updateDots();
+}
+
+// ── GRADING ──
+function isCorrect(qnum) {
+  const q = QS.find(q => q.num === qnum);
+  if (!q) return false;
+  const given = ST.answers[qnum];
+  if (!given) return false;
+  if (q.inputType === 'numeric') return Math.abs(parseFloat(given) - parseFloat(q.correct)) < 0.01;
+  return given.toUpperCase() === q.correct.toUpperCase();
+}
+
+// ── PRACTICE MODE: per-question submit ──
+function submitAnswer() {
+  if (MODE === 'test' || ST.reviewMode) return;
+  const q = QS[ST.cur];
+  const val = getInput(q);
+  if (val === null) return;
+  ST.answers[q.num] = val;
+  const ok = isCorrect(q.num);
+  if (ok) { ST.xp += 20; updateXP(); }
+  showFB(ok ? '✅ Correct! +20 XP' : `❌ Incorrect — correct answer: <strong>${q.correct}</strong>`, ok);
+  const expEl = document.getElementById('q-explanation');
+  expEl.innerHTML = q.explanation;
+  expEl.classList.add('show');
+  saveGame(); updateDots(); updateNav();
+}
+
+function getInput(q) {
+  if (q.inputType === 'mc' || q.inputType === 'qc') {
+    const sel = document.querySelector(`#opts-${q.num} .opt.sel`);
+    if (!sel) { showFB('Please select an answer.', false); return null; }
+    return sel.querySelector('.opt-circle')?.textContent?.trim();
+  } else if (q.inputType === 'sata') {
+    const sels = document.querySelectorAll(`#opts-${q.num} .opt.sel`);
+    if (!sels.length) { showFB('Select at least one answer.', false); return null; }
+    return Array.from(sels).map(o => o.querySelector('.opt-circle')?.textContent?.trim()).filter(Boolean).sort().join('');
+  } else if (q.inputType === 'numeric') {
+    const inp = document.getElementById(`num-${q.num}`);
+    if (!inp || !inp.value.trim()) { showFB('Please enter a value.', false); return null; }
+    return inp.value.trim();
+  }
+  return null;
+}
+
+function showFB(msg, ok) {
+  document.getElementById('q-feedback').innerHTML =
+    `<div class="feedback ${ok ? 'fb-correct' : 'fb-wrong'}">${msg}</div>`;
+}
+
+function showHint() {
+  if (MODE === 'test' || ST.reviewMode) return;
+  const q = QS[ST.cur];
+  document.getElementById('q-feedback').innerHTML =
+    `<div class="fb-hint"><strong>💡 Hint</strong>${q.hint}</div>`;
+}
+
+// ── NAVIGATION ──
+function goQ(dir) {
+  if (MODE === 'test') saveNumericCurrent();
+  const next = ST.cur + dir;
+  if (next < 0 || next >= QS.length) return;
+  renderQ(next);
+}
+
+function jumpTo(idx) {
+  if (MODE === 'test') saveNumericCurrent();
+  renderQ(idx);
+}
+
+function skipQ() {
+  if (ST.cur < QS.length-1) goQ(1);
+}
+
+function saveNumericCurrent() {
+  const q = QS[ST.cur];
+  if (q.inputType === 'numeric') {
+    const inp = document.getElementById(`num-${q.num}`);
+    if (inp && inp.value.trim()) { ST.answers[q.num] = inp.value.trim(); updateDots(); updateNav(); }
+  }
+}
+
+// ── FINAL SUBMIT ──
+function finalSubmit() {
+  if (MODE === 'test') {
+    saveNumericCurrent();
+    if (ST.timerInterval) { clearInterval(ST.timerInterval); ST.timerInterval = null; }
+  }
+  // Remove any timeup overlay
+  document.querySelectorAll('.timeup-overlay').forEach(el => el.remove());
+
+  QS.forEach(q => {
+    if (!ST.answers[q.num]) ST.stats.skip++;
+    else if (isCorrect(q.num)) ST.stats.correct++;
+    else ST.stats.wrong++;
+  });
+
+  if (MODE === 'test') { ST.xp = ST.stats.correct * 20; updateXP(); }
+  ST.submitted = true;
+  localStorage.removeItem('fsh_gre_s4');
+  showResults();
+}
+
+// ── RESULTS ──
+function showResults() {
+  const pct = Math.round(ST.stats.correct / QS.length * 100);
+  document.getElementById('score-eye').textContent =
+    MODE === 'test' ? '⏱️ Timed Test Complete' : '🎉 Practice Set 4 Complete';
+  document.getElementById('s-pct').textContent = pct+'%';
+  document.getElementById('s-sub').textContent =
+    `${ST.stats.correct} correct out of ${QS.length} · ` +
+    (MODE === 'test' ? `Timed Test · ${fmtTime(ST.timeUsed)} used` : 'Practice Mode');
+  document.getElementById('s-bar').style.width = pct+'%';
+  document.getElementById('s-correct').textContent = ST.stats.correct;
+  document.getElementById('s-wrong').textContent = ST.stats.wrong;
+  document.getElementById('s-skip').textContent = ST.stats.skip;
+  document.getElementById('s-xp').textContent = ST.xp;
+
+  const timeCard = document.getElementById('s-time-card');
+  if (timeCard) {
+    timeCard.style.display = MODE === 'test' ? '' : 'none';
+    document.getElementById('s-time').textContent = fmtTime(ST.timeUsed);
+  }
+
+  let comment = '';
+  if (pct >= 90) comment = '🏆 Outstanding — top GRE Quant performance!';
+  else if (pct >= 75) comment = '⭐ Strong performance — well above average.';
+  else if (pct >= 60) comment = '📈 Good work — keep reviewing the misses.';
+  else if (pct >= 40) comment = '📚 Solid foundation — more practice will build confidence.';
+  else comment = '💪 Keep going — every attempt builds skill.';
+  document.getElementById('s-comment').textContent = comment;
+
+  const badges = [];
+  if (pct === 100) badges.push('🎯 Perfect Score');
+  if (pct >= 80) badges.push('🏆 Expert');
+  if (pct >= 60) badges.push('⭐ Proficient');
+  if (MODE === 'test' && ST.timeUsed < TOTAL_SECS) badges.push('⚡ Finished Early');
+  if (ST.stats.skip === 0) badges.push('💪 No Skips');
+  badges.push('✅ Set 4 Complete');
+  document.getElementById('s-badges').innerHTML = badges.map(b => `<span class="badge">${b}</span>`).join('');
+
+  const topics = [
+    'Quantitative Comparison — team/children constraint',
+    'Quantitative Comparison — ratio inequality (two unknowns)',
+    'Quantitative Comparison — zero-mean sequence',
+    'Quantitative Comparison — negative exponents',
+    'Quantitative Comparison — parallelogram angle relations',
+    'Profit = Revenue − Cost (algebra word problem)',
+    'Trapezoid area with midpoint triangle',
+    'Standard deviation and data shifts',
+    'Polynomial equations — distinct roots',
+    'Normal distribution probability estimation',
+    'Pythagorean theorem — right triangle with ratio legs',
+    'Fraction to percent conversion',
+    'Probability — Venn diagram / overlapping sets',
+    'Compound inequalities — testing answer choices',
+    'Commission structure — Select All That Apply'
+  ];
+  document.getElementById('s-topics').innerHTML = topics.map(t =>
+    `<li><span class="chk">✅</span>${t}</li>`).join('');
+
+  updateDots();
+  document.getElementById('botnav').style.display = 'none';
+  showScreen('screen-score');
+}
+
+// ── REVIEW MODE ──
+function startReview() {
+  ST.reviewMode = true;
+  showScreen('screen-q');
+  document.getElementById('botnav').style.display = '';
+  document.getElementById('btn-submit-final').style.display = 'none';
+  document.getElementById('btn-skip').style.display = 'none';
+  document.getElementById('action-row').style.display = 'none';
+  renderQ(0);
+}
+
+function applyReview() {
+  const q = QS[ST.cur];
+  document.querySelectorAll(`#opts-${q.num} .opt`).forEach(o => {
+    o.classList.remove('sel');
+    const key = o.querySelector('.opt-circle')?.textContent?.trim();
+    if (!key) return;
+    if (q.correct.includes(key)) o.classList.add('ok');
+    else if (ST.answers[q.num] && ST.answers[q.num].includes(key)) o.classList.add('bad');
+  });
+  if (q.inputType === 'numeric') {
+    const inp = document.getElementById(`num-${q.num}`);
+    if (inp && !inp.nextElementSibling?.classList.contains('review-note')) {
+      inp.value = ST.answers[q.num] || '';
+      inp.style.borderColor = isCorrect(q.num) ? '#16A34A' : '#DC2626';
+      const note = document.createElement('div');
+      note.className = 'review-note';
+      note.style.cssText = 'font-size:13px;margin-top:8px;font-weight:600;color:' + (isCorrect(q.num) ? '#064E3B' : '#7F1D1D');
+      note.textContent = isCorrect(q.num) ? '✅ Correct!' : `❌ Correct answer: ${q.correct}`;
+      inp.parentNode.appendChild(note);
+    }
+  }
+  const expEl = document.getElementById('q-explanation');
+  expEl.innerHTML = q.explanation;
+  expEl.classList.add('show');
+}
+
+// ── KEYBOARD ──
+document.addEventListener('keydown', e => {
+  if (!document.getElementById('screen-q').classList.contains('active')) return;
+  if (e.key === 'Enter' && MODE === 'practice') submitAnswer();
+  if (e.key === 'ArrowRight' && MODE === 'test') goQ(1);
+  if (e.key === 'ArrowLeft' && MODE === 'test') goQ(-1);
+});
+
+// ── INIT ──
+selectMode('practice');
+</script>
+</body>
